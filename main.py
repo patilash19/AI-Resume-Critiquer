@@ -1,7 +1,6 @@
 import streamlit as st
 import io
 import os
-from dotenv import load_dotenv
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
