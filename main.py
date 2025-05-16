@@ -21,6 +21,9 @@ job_role = st.text_input("Enter te job role your targeting(optional)")
 
 analyze = st.button("Analyze Resume")
 
+def create_txt(text):
+    return text.encode('utf-8')
+
 def create_pdf(text):
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer, pagesizr=letter)
@@ -87,6 +90,7 @@ Please provide your analysis in a clear,structured format with specific recommen
 
         feedback_text = response.choices[0].message.content
         pdf_file = create_pdf(feedback_text)
+        txt_file = create_txt(feedback_text)
 
         st.download_button(
             label="📥 Download Feedback as PDF",
@@ -94,9 +98,25 @@ Please provide your analysis in a clear,structured format with specific recommen
             file_name="resume_feedback.pdf",
             mime="application/pdf"
         )
+        st.download_button(
+            label="📝 Download as Text",
+            data=txt_file,
+            file_name="resume_feedback.txt",
+            mime="text/plian"
+        )
         9
     except Exception as e:
         st.error(f"An error occured:{str(e)}")
+
+
+
+
+
+
+   
+
+
+        
 
 
 
