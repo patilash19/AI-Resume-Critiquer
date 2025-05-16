@@ -1,5 +1,5 @@
 import streamlit as st
-import PyPDF2
+import PyPDF2 # type: ignore
 import io
 import os
 from openai import OpenAI
